@@ -1,0 +1,16 @@
+---
+- hosts: appserver
+  become: all
+  tasks:
+  - name: java installation
+    apt:
+      name: openjdk-7-jre
+      state: present
+  - name: jenkins installation
+    get_url:
+      url: http://ftp.yz.yamagata-u.ac.jp/pub/misc/jenkins/war-stable/2.60.2/jenkins.war
+  - name: service start
+    service:
+     name: jenkins.war
+     state: started
+     enabled: yes
