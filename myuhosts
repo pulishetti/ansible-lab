@@ -1,0 +1,10 @@
+[appserver]
+ip-172-31-12-178.us-west-2.compute.internal
+
+[redhat]
+localhost
+ip-172-31-11-47.us-west-2.compute.internal
+
+[workers]
+ip-172-31-11-47.us-west-2.compute.internal
+ip-172-31-12-178.us-west-2.compute.internal

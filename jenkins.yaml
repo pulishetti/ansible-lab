@@ -1,16 +1,21 @@
 ---
-- hosts: appserver
-  become: all
+- hosts: all
+  become: yes
   tasks:
   - name: java installation
-    apt:
-      name: openjdk-7-jre
+    yum:
+      name: java-1.8.0-openjdk.x86_64
+      state: present
+  - name: tomcat insall
+    yum: 
+      name: tomcat
       state: present
   - name: jenkins installation
     get_url:
       url: http://ftp.yz.yamagata-u.ac.jp/pub/misc/jenkins/war-stable/2.60.2/jenkins.war
+      dest: /usr/share/tomcat/webapps/jenkins.war
   - name: service start
     service:
-     name: jenkins.war
+     name: tomcat
      state: started
      enabled: yes
