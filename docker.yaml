@@ -3,10 +3,13 @@
   tasks:
   - name: install docker repo
     yum_repository:
+      name: yum repo
+      description: Some YUM repo
       baseurl: https://yum.dockerproject.org/repo/main/centos/7/
-       enabled=1
-       gpgcheck=1
-       gpgkey:https://yum.dockerproject.org/gpg
+      enabled:
+      gpgcheck:
+      gpgkey: https://yum.dockerproject.org/gpg
+      reposdir:
   - name: install docker -ce
     yum:
       name: docker-engine
