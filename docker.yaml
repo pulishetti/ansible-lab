@@ -2,11 +2,25 @@
 - hosts: docker 
   tasks:
   - name: install docker repo
-    get_url:
-      url: https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-ce-17.03.0.ce-1.el7.centos.x86_64.rpm
-      dest: /root
+    yum_repository:
+      name: somerepo
+      description: Some YUM repo
+      reposdir:
+      baseurl: https://yum.dockerproject.org/repo/main/centos/7/
+       enabled=1
+       gpgcheck=1
+       gpgkey:https://yum.dockerproject.org/gpg
   - name: install docker -ce
     yum:
-      name: docker-ce-17.03.0.ce-1.el7.centos.x86_64.rpm 
+      name: docker-engine
       state: present
-         
+  - name: service start
+    systemd:
+      name: docker.service 
+      enabled: yes
+      masked: no
+  - name: start service
+    systemd:
+      name: docker
+      state: started
+      enabled: True
