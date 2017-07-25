@@ -3,18 +3,13 @@
   tasks:
   - name: python install
     yum:
-    name:  python2 
-    state: present 
+      name:  python 
+      state: present
   - name: installing nodejs repository
-    yum: 
-     name: epel-release
-     state: present
+    get_url: 
+      url: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+      dest: /etc/
   - name: insatlling nodejs 
     yum: 
-     name: nodejs
-     state: present
-  - name: installing dependency
-    yum: 
-      name:  npm
+      name: nodejs
       state: present
-    
