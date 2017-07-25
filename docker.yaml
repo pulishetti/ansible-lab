@@ -2,11 +2,22 @@
 - hosts: docker 
   tasks:
   - name: install docker repo
-    get_url:
-      url: https://download.docker.com/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
-      dest: /home/ansible/
+    yum_repository:
+      baseurl: https://yum.dockerproject.org/repo/main/centos/7/
+       enabled=1
+       gpgcheck=1
+       gpgkey:https://yum.dockerproject.org/gpg
   - name: install docker -ce
     yum:
-      name: docker-ce
+      name: docker-engine
       state: present
-         
+  - name: service start
+    systmd:
+      name: docker.service 
+      enabled: yes
+      masked: no
+  - name: start service
+    systemd:
+      name: docker
+      state: started
+      enabled: True
