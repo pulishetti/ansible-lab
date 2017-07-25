@@ -1,6 +1,10 @@
 ---
-- hosts:
+- hosts: all
   tasks:
+  - name: python install
+    yum:
+    name:  python2 
+    state: present 
   - name: installing nodejs repository
     yum: 
      name: epel-release
