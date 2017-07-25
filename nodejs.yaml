@@ -1,10 +1,10 @@
 ---
-- hosts:
+- hosts: all
   tasks:
   - name: installing nodejs repository
     get_url: 
-      url: --silent --location https://rpm.nodesource.com/setup_6.x | bash -
-      dest: /etc/ansible/
+      url: https://rpm.nodesource.com/setup_6.x 
+      dest: /root
   - name: insatlling nodejs 
     yum: 
      name: nodejs
