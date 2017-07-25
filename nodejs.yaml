@@ -1,0 +1,16 @@
+---
+- hosts: all
+  tasks:
+  - name: installing nodejs repository
+    yum: 
+     name: epel-release
+     state: present
+  - name: insatlling nodejs 
+    yum: 
+     name: nodejs
+     state: present
+  - name: installing dependency
+    yum: 
+      name:  npm
+      state: present
+    
