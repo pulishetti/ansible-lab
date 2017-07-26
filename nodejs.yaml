@@ -1,15 +1,15 @@
 ---
-- hosts: all
+- hosts: localhost
+  become: yes
   tasks:
-  - name: python install
-    yum:
-      name:  python 
-      state: present
-  - name: installing nodejs repository
-    get_url: 
-      url: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-      dest: /etc/
+  #- name: Add repository
+   # yum_repository:
+    #  name: epel
+     # description: EPEL YUM repo
+      #baseurl: https://rpm.nodesource.com/pub_4.x/el/7/x86_64/nodesource-release-el7-1.noarch.rpm
   - name: insatlling nodejs 
     yum: 
       name: nodejs
       state: present
+      
+ 
