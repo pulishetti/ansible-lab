@@ -1,0 +1,4 @@
+---
+# vars file for tcs.httpd
+pkg_deb: apache2
+pkg_rhel: httpd

@@ -1,9 +1,17 @@
 ---
+<<<<<<< HEAD
+- hosts: all
+  become: yes
+  tasks:
+  - name: java installation
+    yum:
+=======
 - hosts: appserver
   become: yes
   tasks:
   - name: java installation
     apt:
+>>>>>>> 3b38f472f2897f9683ba6bbe045c12f740602560
       name: java-1.8.0-openjdk.x86_64
       state: present
   - name: tomcat insall
@@ -13,6 +21,14 @@
   - name: jenkins installation
     get_url:
       url: http://ftp.yz.yamagata-u.ac.jp/pub/misc/jenkins/war-stable/2.60.2/jenkins.war
+<<<<<<< HEAD
+      dest: /usr/share/tomcat/webapps/jenkins.war
+  - name: service start
+    service:
+     name: tomcat
+     state: started
+     enabled: yes
+=======
       dest: /home/ansible/ansible-lab
 
   - name: service start
@@ -20,3 +36,4 @@
       name: jenkins.war
       state: started
       enabled: yes
+>>>>>>> 3b38f472f2897f9683ba6bbe045c12f740602560

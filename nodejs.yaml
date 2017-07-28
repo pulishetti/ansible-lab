@@ -1,14 +1,12 @@
 ---
 - hosts: localhost
+  become: yes
   tasks:
-- name: Add repository
-  yum_repository:
-    name: epel
-    description: EPEL YUM repo
-    baseurl: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-- name: insatlling nodejs 
-  yum: 
-    name: nodejs
-    state: present
+  - script: 
+    
+  - name: insatlling nodejs 
+    yum: 
+      name: nodejs
+      state: present
       
  

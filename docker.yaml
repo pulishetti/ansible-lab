@@ -1,4 +1,4 @@
---- 
+---
 - hosts: docker 
   tasks:
   - name: install docker repo
@@ -6,8 +6,6 @@
       name: yum repo
       description: Some YUM repo
       baseurl: https://yum.dockerproject.org/repo/main/centos/7/
-      enabled:
-      gpgcheck:
       gpgkey: https://yum.dockerproject.org/gpg
       reposdir:
   - name: install docker -ce
@@ -15,7 +13,7 @@
       name: docker-engine
       state: present
   - name: service start
-    systmd:
+    systemd:
       name: docker.service 
       enabled: yes
       masked: no

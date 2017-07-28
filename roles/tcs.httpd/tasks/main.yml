@@ -1,0 +1,13 @@
+---
+# tasks file for tcs.httpd
+- name: installing httpd
+  yum: 
+    name: "{{ pkg_rhel }}"
+    state: present
+  when: ansible_os_family == "RedHat"   
+- name: installing apache2
+  apt:
+    name: "{{ pkg_deb }}"
+    state: present
+  when: ansible_os_family == "Debian" 
+         
