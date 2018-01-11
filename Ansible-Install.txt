@@ -49,4 +49,4 @@ In Ansible Node (192.168.33.98)
 # sudo yum install epel-release 	#epel - Extra Packages for Enterprise Linux is open source and free community based repository project from Fedora team which provides 100% high quality add-on software packages for Linux distribution including RHEL (Red Hat Enterprise Linux), CentOS
 # sudo yum update -y
 # sudo yum install ansible  		# if u want to install specific version then mention version here 
-# sudo ansible --version 
+# sudo ansible --version this is second chenge in git
