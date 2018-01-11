@@ -1,0 +1,52 @@
+Passwordless login using ssh 
+-----------------------------
+In Ansible Control Server (192.168.33.33)
+++++++++++++++++++++++++++++++++++++++++++
+1. sudo yum -y update
+2. sudo useradd -m -d /home/ansible ansible     # Add a user ansible & create a home dir ansible for it 
+3. sudo passwd ansible 				# give password (mine: ansible)
+4. sudo visudo					# add ansible user in Line 92 add this  ansible ALL=(ALL)       NOPASSWD: ALL
+5. su - ansible
+6. sudo vi /etc/selinux/config   		# change to SELINUX=permissive  after doing this logout & login 
+7. sudo vi /etc/ssh/sshd_config 		# change below accordingly 
+	1.	PermitRootLogin yes
+	2.	PubkeyAuthentication yes
+	3.	PasswordAuthentication yes   
+8. sudo service sshd restart
+9. ssh-keygen -t rsa
+10. ls -l ~/.ssh    				# it will show the key id_rsa & id_rsa.pub 
+11. ssh-copy-id ansible@192.168.33.98 ~/.ssh    # 192.168.33.98 is Node machine IP provide Password of ansible user
+13. logout or Ctrl+d 
+14. ssh 192.168.33.98    # This Time it won't ask u for passwd 
+	
+
+ 
+In Ansible Node (192.168.33.98)
++++++++++++++++++++++++++++++++++++
+1. sudo yum -y update
+2. sudo useradd -m -d /home/ansible ansible     # Add a user ansible & create a home dir ansible for it 
+3. sudo passwd ansible 				# give password (mine: ansible)
+4. sudo visudo 					# add ansible user in Line 92 add this  ansible ALL=(ALL)       ALL
+5. su - ansible 
+6. sudo vi /etc/selinux/config   		# change to SELINUX=permissive  after doing this logout & login 
+7. 	  					# change below accordingly 
+	1.	PermitRootLogin yes
+	2.	PubkeyAuthentication yes
+	3.	PasswordAuthentication yes
+8. sudo service sshd restart
+
+ Ansible Installation
+-------------------------
+ On Ubuntu :
+
+# sudo apt-get update -y
+# sudo apt-get install ansible -y
+# sudo ansible --version   
+ 
+ On Centos :
+
+# sudo yum update -y 
+# sudo yum install epel-release 	#epel - Extra Packages for Enterprise Linux is open source and free community based repository project from Fedora team which provides 100% high quality add-on software packages for Linux distribution including RHEL (Red Hat Enterprise Linux), CentOS
+# sudo yum update -y
+# sudo yum install ansible  		# if u want to install specific version then mention version here 
+# sudo ansible --version 
